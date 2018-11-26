@@ -33,6 +33,7 @@ class HomeController @Inject()(db: Database, cc: ControllerComponents) extends A
                ,res.getString(2)
                ,res.getString(3)))
       }
+    }
   }
   
   def sA() = Action {
@@ -44,6 +45,7 @@ class HomeController @Inject()(db: Database, cc: ControllerComponents) extends A
         list_sA.+=(tb_autor(res.getInt(1)
                ,res.getString(2)))
       }
+    }
   }
   
   def sL() = Action {
@@ -59,5 +61,6 @@ class HomeController @Inject()(db: Database, cc: ControllerComponents) extends A
                ,res.getString(5)
                ,res.getInt(6)))
       }
+    }
   }
 }

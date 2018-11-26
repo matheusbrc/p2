@@ -1,0 +1,13 @@
+@(list_sM:Seq[tbMovim])
+ 
+@main("sM tbMovim") {
+    <h1>Tabela Movimento</h1>
+    <table>
+    @for(t <- list_sM) {
+        <tr>
+           <td>@t.cdLivro</td>
+           <td> | @t.cdCliente</td>
+        </tr> 
+    }
+    </table>
+}

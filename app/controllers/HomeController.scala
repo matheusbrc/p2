@@ -57,5 +57,15 @@ extends AbstractController(cc) with play.api.i18n.I18nSupport {
   }
   
   def sM() = Action {
+    val list_sM = MutableList[tbMovim]()
+    db.withConnection { conn =>
+      val stm = conn.createStatement()
+      val res = stm.executeQuery("""select * from tb_movimento""")
+      while (res.next()) {
+        list_sM.+=(tbMovim(res.getInt(1)
+               ,res.getInt(2)))
+      }
+    }
+    Ok(views.html.sM(list_sM))
   }
 }

@@ -28,4 +28,7 @@ class HomeController @Inject()(db: Database, cc: ControllerComponents) extends A
   
   def sA() = Action { implicit request =>
   }
+  
+  def sL() = Action { implicit request =>
+  }
 }

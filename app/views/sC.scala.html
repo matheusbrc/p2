@@ -1,0 +1,14 @@
+@(list_sC:Seq[tbCliente])
+ 
+@main("sC tbCliente") {
+    <h1>Tabela Cliente</h1>
+    <table>
+    @for(t <- list_sC) {
+        <tr>
+           <td>@t.cdCliente</td>
+           <td>@t.nmCliente</td>
+           <td>@t.senha</td>
+        </tr> 
+    }
+    </table>
+}

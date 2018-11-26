@@ -1,0 +1,13 @@
+@(list_sA:Seq[tbAutor])
+ 
+@main("sA tbAutor") {
+    <h1>Tabela Autor</h1>
+    <table>
+    @for(t <- list_sA) {
+        <tr>
+           <td>@t.cdAutor</td>
+           <td>@t.nmAutor</td>
+        </tr> 
+    }
+    </table>
+}

@@ -4,7 +4,7 @@ import play.api.db.Database;
 
 object AutorDAO{
     
-    def getAutor(db: Database, cdAutor Int): tbAutor = {
+    def getAutor(db: Database, cdAutor: Int): tbAutor = {
         db.withConnection{conn =>
             val ps = conn.prepareStatement("select * from tb_autor where cd_autor=?")
             ps.setInt(1,cdAutor)

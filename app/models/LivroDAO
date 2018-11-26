@@ -13,7 +13,7 @@ object LivroDAO{
                 tbLivro(res.getInt(1),res.getInt(2),res.getString(3),
                 res.getString(4),res.getInt(5))
             else
-                tblivro(0,0,"","",0)
+                tbLivro(0,0,"","",0)
         }
     }
     

@@ -55,4 +55,7 @@ extends AbstractController(cc) with play.api.i18n.I18nSupport {
     }
     Ok(views.html.sL(list_sL))
   }
+  
+  def sM() = Action {
+  }
 }

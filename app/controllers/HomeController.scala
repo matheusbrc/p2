@@ -48,10 +48,9 @@ extends AbstractController(cc) with play.api.i18n.I18nSupport {
       while (res.next()) {
         list_sL.+=(tbLivro(res.getInt(1)
                ,res.getInt(2)
-               ,res.getInt(3)
+               ,res.getString(3)
                ,res.getString(4)
-               ,res.getString(5)
-               ,res.getInt(6)))
+               ,res.getInt(5)))
       }
     }
     Ok(views.html.sL(list_sL))

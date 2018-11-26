@@ -23,7 +23,16 @@ class HomeController @Inject()(db: Database, cc: ControllerComponents) extends A
     Ok(views.html.index())
   }
   
-  def sC() = Action { implicit request =>
+  def sC() = Action {
+    val list_sC = MutableList[Cliente]()
+    db.withConnection { conn =>
+      val stm = conn.createStatement()
+      val res = stm.executeQuery("""select * from tb_cliente""")
+      while (res.next()) {
+        list_sC.+=(Cliente(res.getInt(1)
+               ,res.getString(2)
+               ,res.getString(3)))
+      }
   }
   
   def sA() = Action { implicit request =>

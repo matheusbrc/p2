@@ -22,4 +22,7 @@ class HomeController @Inject()(db: Database, cc: ControllerComponents) extends A
   def index() = Action { implicit request: Request[AnyContent] =>
     Ok(views.html.index())
   }
+  
+  def sC() = Action { implicit request =>
+  }
 }

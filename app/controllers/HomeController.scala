@@ -5,6 +5,7 @@ import play.api._
 import play.api.mvc._
 import play.api.db.Database
 import scala.collection.mutable.MutableList
+import models.Cliente
 
 /**
  * This controller creates an `Action` to handle HTTP requests to the

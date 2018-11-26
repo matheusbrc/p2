@@ -25,12 +25,12 @@ class HomeController @Inject()(db: Database, cc: ControllerComponents) extends A
   }
   
   def sC() = Action {
-    val list_sC = MutableList[tb_cliente]()
+    val list_sC = MutableList[tbCliente]()
     db.withConnection { conn =>
       val stm = conn.createStatement()
       val res = stm.executeQuery("""select * from tb_cliente""")
       while (res.next()) {
-        list_sC.+=(tb_cliente(res.getInt(1)
+        list_sC.+=(tbCliente(res.getInt(1)
                ,res.getString(2)
                ,res.getString(3)))
       }
@@ -38,24 +38,24 @@ class HomeController @Inject()(db: Database, cc: ControllerComponents) extends A
   }
   
   def sA() = Action {
-    val list_sA = MutableList[tb_autor]()
+    val list_sA = MutableList[tbAutor]()
     db.withConnection { conn =>
       val stm = conn.createStatement()
       val res = stm.executeQuery("""select * from tb_autor""")
       while (res.next()) {
-        list_sA.+=(tb_autor(res.getInt(1)
+        list_sA.+=(tbAutor(res.getInt(1)
                ,res.getString(2)))
       }
     }
   }
   
   def sL() = Action {
-    val list_sL = MutableList[tb_livro]()
+    val list_sL = MutableList[tbLivro]()
     db.withConnection { conn =>
       val stm = conn.createStatement()
       val res = stm.executeQuery("""select * from tb_livro""")
       while (res.next()) {
-        list_sL.+=(tb_livro(res.getInt(1)
+        list_sL.+=(tbLivro(res.getInt(1)
                ,res.getInt(2)
                ,res.getInt(3)
                ,res.getString(4)

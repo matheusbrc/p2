@@ -55,7 +55,7 @@ class HomeController @Inject()(db: Database, cc: ControllerComponents) extends A
       val stm = conn.createStatement()
       val res = stm.executeQuery("""select * from tb_livro""")
       while (res.next()) {
-        list_sA.+=(tb_livro(res.getInt(1)
+        list_sL.+=(tb_livro(res.getInt(1)
                ,res.getInt(2)
                ,res.getInt(3)
                ,res.getString(4)

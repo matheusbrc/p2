@@ -10,7 +10,7 @@ import play.api.db.Database
  * application's home page.
  */
 @Singleton
-class HomeController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
+class HomeController @Inject()(db: Database, cc: ControllerComponents) extends AbstractController(cc) {
 
   /**
    * Create an Action to render an HTML page.

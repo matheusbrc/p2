@@ -8,6 +8,7 @@ import scala.collection.mutable.MutableList
 import models.tbCliente
 import models.tbAutor
 import models.tbLivro
+import models.tbMovim
 
 @Singleton
 class HomeController @Inject()(db: Database, cc: ControllerComponents)

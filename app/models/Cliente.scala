@@ -1,3 +1,3 @@
 package models
  
-case class tbCliente(cd: Int, nm: String, senha: String)
+case class tbCliente(cdCliente: Int, nmCliente: String, senha: String)

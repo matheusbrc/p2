@@ -15,4 +15,19 @@ object ClienteDAO{
                 tbAutor(0,"")
         }
     }
+    
+    def listAutor(db: Database): MutableList[tbAutor] = {
+    
+        val list_sA = MutableList[tbAutor]()
+    
+        db.withConnection { conn =>
+          val stm = conn.createStatement()
+          val res = stm.executeQuery("""select * from autor""")
+          while (res.next()) {
+            list_sA.+=(tbAutor(res.getInt(1)
+                   ,res.getString(2)))
+          }
+        }
+        list_sA
+    }
 }

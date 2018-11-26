@@ -24,11 +24,11 @@ object ClienteDAO{
           val stm = conn.createStatement()
           val res = stm.executeQuery("""select * from cliente""")
           while (res.next()) {
-            list.+=(tbCliente(res.getInt(1)
+            list_sC.+=(tbCliente(res.getInt(1)
                    ,res.getString(2)
                    ,res.getString(3)))
           }
         }
-        list
+        list_sC
     }
 }

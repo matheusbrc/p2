@@ -46,6 +46,18 @@ class HomeController @Inject()(db: Database, cc: ControllerComponents) extends A
       }
   }
   
-  def sL() = Action { implicit request =>
+  def sL() = Action {
+    val list_sL = MutableList[tb_livro]()
+    db.withConnection { conn =>
+      val stm = conn.createStatement()
+      val res = stm.executeQuery("""select * from tb_livro""")
+      while (res.next()) {
+        list_sA.+=(tb_livro(res.getInt(1)
+               ,res.getInt(2)
+               ,res.getInt(3)
+               ,res.getString(4)
+               ,res.getString(5)
+               ,res.getInt(6)))
+      }
   }
 }

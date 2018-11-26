@@ -2,7 +2,7 @@ package models;
 import scala.collection.mutable.MutableList;
 import play.api.db.Database;
 
-object ClienteDAO{
+object AutorDAO{
     
     def getAutor(db: Database, cdAutor Int): tbAutor = {
         db.withConnection{conn =>

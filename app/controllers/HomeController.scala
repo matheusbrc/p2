@@ -38,6 +38,7 @@ class HomeController @Inject()(db: Database, cc: ControllerComponents) extends A
                ,res.getString(3)))
       }
     }
+    Ok(views.html.sC(list_sC))
   }
   
   def sA() = Action {
@@ -50,6 +51,7 @@ class HomeController @Inject()(db: Database, cc: ControllerComponents) extends A
                ,res.getString(2)))
       }
     }
+    Ok(views.html.sA(list_sA))
   }
   
   def sL() = Action {
@@ -66,5 +68,6 @@ class HomeController @Inject()(db: Database, cc: ControllerComponents) extends A
                ,res.getInt(6)))
       }
     }
+    Ok(views.html.sL(list_sL))
   }
 }

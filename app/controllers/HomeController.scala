@@ -14,7 +14,8 @@ import models.tbLivro
  * application's home page.
  */
 @Singleton
-class HomeController @Inject()(db: Database, cc: ControllerComponents) extends AbstractController(cc) {
+class HomeController @Inject()(db: Database, cc: ControllerComponents)
+extends AbstractController(cc) with play.api.i18n.I18nSupport {
 
   /**
    * Create an Action to render an HTML page.

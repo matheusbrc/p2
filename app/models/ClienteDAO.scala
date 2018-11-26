@@ -22,7 +22,7 @@ object ClienteDAO{
     
         db.withConnection { conn =>
           val stm = conn.createStatement()
-          val res = stm.executeQuery("""select * from cliente""")
+          val res = stm.executeQuery("""select * from tb_cliente""")
           while (res.next()) {
             list_sC.+=(tbCliente(res.getInt(1)
                    ,res.getString(2)

@@ -22,7 +22,7 @@ object AutorDAO{
     
         db.withConnection { conn =>
           val stm = conn.createStatement()
-          val res = stm.executeQuery("""select * from autor""")
+          val res = stm.executeQuery("""select * from tb_autor""")
           while (res.next()) {
             list_sA.+=(tbAutor(res.getInt(1)
                    ,res.getString(2)))

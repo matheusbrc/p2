@@ -19,11 +19,11 @@ object LivroDAO{
     
     def listLivro(db: Database): MutableList[tbLivro] = {
     
-        val list_sL = MutableList[tblivro]()
+        val list_sL = MutableList[tbLivro]()
     
         db.withConnection { conn =>
           val stm = conn.createStatement()
-          val res = stm.executeQuery("""select * from livro""")
+          val res = stm.executeQuery("""select * from tb_livro""")
           while (res.next()) {
             list_sL.+=(tbLivro(res.getInt(1)
                    ,res.getInt(2)

@@ -1,0 +1,19 @@
+package models;
+import scala.collection.mutable.MutableList;
+import play.api.db.Database;
+
+object LivroDAO{
+    
+    def getLivro(db: Database, cdLivro: Int): tbLivro = {
+        db.withConnection{conn =>
+            val ps = conn.prepareStatement("select * from tb_livro where cd_livro=?")
+            ps.setInt(1,cdLivro)
+            val res = ps.executeQuery()
+            if(res.next())
+                tbLivro(res.getInt(1),res.getInt(2),res.getInt(3),
+                res.getString(4),res.getString(5),res.getInt(6))
+            else
+                tblivro(0,0,0,"","",0)
+        }
+    }
+}

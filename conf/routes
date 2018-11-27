@@ -9,7 +9,7 @@ GET     /sC                         controllers.HomeController.sC
 GET     /sA                         controllers.HomeController.sA
 GET     /sL                         controllers.HomeController.sL
 GET     /sM                         controllers.HomeController.sM
-GET     /emp                        controllers.HomeController.emp
+GET     /emp/:liv/:cli              controllers.HomeController.emp(liv: Int, cli: Int)
 GET     /dev                        controllers.HomeController.dev
 
 # Map static resources from the /public folder to the /assets URL path

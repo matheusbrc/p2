@@ -80,6 +80,13 @@ extends AbstractController(cc) with play.api.i18n.I18nSupport {
     }
   }
   
-  def dev() = Action {
+  def dev(cdLiv, cdCli) = Action {
+    db.withConnection{ conn =>
+        val ps = conn.prepareStatement("delete from tb_movimento where cd_livro=? and cd_cliente=?")
+        ps.setInt(1,cdLiv)
+        ps.setInt(2,cdCli)
+        ps.execute()
+        Redirect("/sM")
+    }
   }
 }

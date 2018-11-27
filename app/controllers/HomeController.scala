@@ -14,6 +14,10 @@ import models.tbMovim
 class HomeController @Inject()(db: Database, cc: ControllerComponents)
 extends AbstractController(cc) with play.api.i18n.I18nSupport {
   
+  def index() = Action { implicit request: Request[AnyContent] =>
+    Ok(views.html.index())
+  }
+  
   def sC() = Action {
     val list_sC = MutableList[tbCliente]()
     db.withConnection { conn =>
@@ -96,12 +100,12 @@ extends AbstractController(cc) with play.api.i18n.I18nSupport {
     }
   }
   
-  def LxA(cdAut) = Action {
+  def LxA(cdAut: Int) = Action {
     val list_sL = MutableList[tbLivro]()
     db.withConnection { conn =>
       val ps = conn.prepareStatement("select * from tb_livro where cd_autor = ?")
       ps.setInt(1,cdAut)
-      val res = stm.executeQuery()
+      val res = ps.executeQuery()
       while (res.next()) {
         list_sL.+=(tbLivro(res.getInt(1)
                ,res.getInt(2)

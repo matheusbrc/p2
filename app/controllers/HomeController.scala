@@ -96,20 +96,20 @@ extends AbstractController(cc) with play.api.i18n.I18nSupport {
     }
   }
   
-  def AxL(cdLiv) = Action {
-    val list_sA = MutableList[tbAutor]()
+  def LxA(cdAut) = Action {
+    val list_sL = MutableList[tbLivro]()
     db.withConnection { conn =>
-      val stm = conn.createStatement()
-      val res = stm.executeQuery("""select * from tb_autor where cd_autor = ?""")
+      val ps = conn.prepareStatement("select * from tb_livro where cd_autor = ?")
+      ps.setInt(1,cdAut)
+      val res = stm.executeQuery()
       while (res.next()) {
-        list_sA.+=(tbAutor(res.getInt(1)
-               ,res.getString(2)))
+        list_sL.+=(tbLivro(res.getInt(1)
+               ,res.getInt(2)
+               ,res.getString(3)
+               ,res.getString(4)
+               ,res.getInt(5)))
       }
     }
-    Ok(views.html.sA(list_sA))
-  }
-  
-  def LxA(cdAut) = Action {
-    
+    Ok(views.html.sL(list_sL))
   }
 }

@@ -77,6 +77,9 @@ extends AbstractController(cc) with play.api.i18n.I18nSupport {
       ps.setInt(2,cdCli)
       ps.execute()
       Redirect("/sM")
+      val ps2 = conn.prepareStatement("update tb_livro set qtd = qtd-1 where cd_livro = ?")
+      ps2.setInt(1,cdLiv)
+      ps2.execute()
     }
   }
   

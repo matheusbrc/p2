@@ -70,17 +70,17 @@ extends AbstractController(cc) with play.api.i18n.I18nSupport {
     Ok(views.html.sM(list_sM))
   }
   
-  def emp(cdLiv, cdCli) = Action {
+  def emp(cdLiv: Int, cdCli: Int) = Action {
     db.withConnection { conn =>
       val ps = conn.prepareStatement("insert into tb_movimento(cd_livro,cd_cliente) values (?,?)")
-      ps.setString(1,cdLiv)
-      ps.setString(2,cdCli)
+      ps.setInt(1,cdLiv)
+      ps.setInt(2,cdCli)
       ps.execute()
       Redirect("/sM")
     }
   }
   
-  def dev(cdLiv, cdCli) = Action {
+  def dev(cdLiv: Int, cdCli: Int) = Action {
     db.withConnection{ conn =>
         val ps = conn.prepareStatement("delete from tb_movimento where cd_livro=? and cd_cliente=?")
         ps.setInt(1,cdLiv)

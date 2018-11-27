@@ -72,4 +72,7 @@ extends AbstractController(cc) with play.api.i18n.I18nSupport {
   
   def emp() = Action {
   }
+  
+  def dev() = Action {
+  }
 }

@@ -85,11 +85,14 @@ extends AbstractController(cc) with play.api.i18n.I18nSupport {
   
   def dev(cdLiv: Int, cdCli: Int) = Action {
     db.withConnection{ conn =>
-        val ps = conn.prepareStatement("delete from tb_movimento where cd_livro=? and cd_cliente=?")
-        ps.setInt(1,cdLiv)
-        ps.setInt(2,cdCli)
-        ps.execute()
-        Redirect("/sM")
+      val ps = conn.prepareStatement("delete from tb_movimento where cd_livro=? and cd_cliente=?")
+      ps.setInt(1,cdLiv)
+      ps.setInt(2,cdCli)
+      ps.execute()
+      Redirect("/sM")
+      val ps2 = conn.prepareStatement("update tb_livro set qtd = qtd+1 where cd_livro = ?")
+      ps2.setInt(1,cdLiv)
+      ps2.execute()
     }
   }
 }

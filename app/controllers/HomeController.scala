@@ -85,7 +85,7 @@ extends AbstractController(cc) with play.api.i18n.I18nSupport {
   
   def dev(cdLiv: Int, cdCli: Int) = Action {
     db.withConnection{ conn =>
-      val ps = conn.prepareStatement("delete from tb_movimento where cd_livro=? and cd_cliente=?")
+      val ps = conn.prepareStatement("delete from tb_movimento where cd_livro=? and cd_cliente = ?")
       ps.setInt(1,cdLiv)
       ps.setInt(2,cdCli)
       ps.execute()
@@ -96,11 +96,20 @@ extends AbstractController(cc) with play.api.i18n.I18nSupport {
     }
   }
   
-  def LxA(cdAut) = Action {
-    
+  def AxL(cdLiv) = Action {
+    val list_sA = MutableList[tbAutor]()
+    db.withConnection { conn =>
+      val stm = conn.createStatement()
+      val res = stm.executeQuery("""select * from tb_autor where cd_autor = ?""")
+      while (res.next()) {
+        list_sA.+=(tbAutor(res.getInt(1)
+               ,res.getString(2)))
+      }
+    }
+    Ok(views.html.sA(list_sA))
   }
   
-  def AxL(cdLiv) = Action {
+  def LxA(cdAut) = Action {
     
   }
 }

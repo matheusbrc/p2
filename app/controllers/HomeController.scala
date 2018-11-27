@@ -95,4 +95,8 @@ extends AbstractController(cc) with play.api.i18n.I18nSupport {
       Redirect("/sM")
     }
   }
+  
+  def LxA(cdAut) = Action {
+    
+  }
 }

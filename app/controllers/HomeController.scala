@@ -76,13 +76,32 @@ extends AbstractController(cc) with play.api.i18n.I18nSupport {
   
   def emp(cdLiv: Int, cdCli: Int) = Action {
     db.withConnection { conn =>
-      val ps = conn.prepareStatement("insert into tb_movimento(cd_livro,cd_cliente) values (?,?)")
+      val ps = conn.prepareStatement("select cd_livro from tb_livro where cd_livro = ?")
       ps.setInt(1,cdLiv)
-      ps.setInt(2,cdCli)
       ps.execute()
-      val ps2 = conn.prepareStatement("update tb_livro set nr_quantidade = nr_quantidade-1 where cd_livro = ?")
-      ps2.setInt(1,cdLiv)
+      val ps2 = conn.prepareStatement("select cd_cliente from tb_cliente where cd_cliente = ?")
+      ps2.setInt(1,cdCli)
       ps2.execute()
+      if(ps != null && ps2 != null){
+        val ps3 = conn.prepareStatement("select count(cd_livro) from tb_movimento where cd_livro = ? and cd_cliente = ?")
+        ps3.setInt(1,cdLiv)
+        ps3.setInt(2,cdCli)
+        val res = ps3.executeQuery()
+        res.next()
+        val ps4 = conn.prepareStatement("select nr_quantidade from tb_livro where cd_livro = ?")
+        ps4.setInt(1,cdLiv)
+        val res2 = ps4.executeQuery()
+        res2.next()
+        if(res2.getInt(1)-res.getInt(1) > 0){
+          val ps5 = conn.prepareStatement("insert into tb_movimento(cd_livro,cd_cliente) values (?,?)")
+          ps5.setInt(1,cdLiv)
+          ps5.setInt(2,cdCli)
+          ps5.execute()
+          val ps6 = conn.prepareStatement("update tb_livro set nr_quantidade = nr_quantidade-1 where cd_livro = ?")
+          ps6.setInt(1,cdLiv)
+          ps6.execute()
+        }
+      }
       Redirect("/sM")
     }
   }

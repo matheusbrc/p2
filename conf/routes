@@ -6,13 +6,13 @@
 # An example controller showing a sample home page
 GET     /                           controllers.HomeController.index
 
-GET     /sC                         controllers.HomeController.sC
-GET     /sA                         controllers.HomeController.sA
-GET     /sL                         controllers.HomeController.sL
-GET     /sM                         controllers.HomeController.sM
-GET     /emp/:liv/:cli              controllers.HomeController.emp(liv: Int, cli: Int)
-GET     /dev/:liv/:cli              controllers.HomeController.dev(liv: Int, cli: Int)
-GET     /LxA/:aut                   controllers.HomeController.LxA(aut: Int)
+GET     /clientes                           controllers.HomeController.sC
+GET     /autores                            controllers.HomeController.sA
+GET     /livros                             controllers.HomeController.sL
+GET     /movimentos                         controllers.HomeController.sM
+GET     /emprestimo/:livroId/:clienteId     controllers.HomeController.emp(livroId: Int, clienteId: Int)
+GET     /devolucao/:livroId/:clienteId      controllers.HomeController.dev(livroId: Int, clienteId: Int)
+GET     /buscar/livros/autor/:autorId       controllers.HomeController.LxA(autorId: Int)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
